@@ -3,7 +3,7 @@ import { basename, dirname, join as joinPath, parse as parsePath, isAbsolute } f
 import { TextDocument, TextEditor, window, workspace } from 'vscode'
 
 import { html as jsBeautify } from 'js-beautify'
-import { getExtension, getType as getMimeType } from 'mime'
+import mime from 'mime'
 import * as mjml2html from 'mjml'
 
 export function renderMJML(
@@ -138,12 +138,12 @@ function getCWD(mjmlPath?: string): string {
 }
 
 function encodeImage(filePath: string, original: string): string {
-    const mimeType: string | null = getMimeType(filePath)
+    const mimeType: string | null = mime.getType(filePath)
     if (!mimeType) {
         return original
     }
 
-    const extension: string | null = getExtension(mimeType)
+    const extension: string | null = mime.getExtension(mimeType)
     if (!extension || ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'svg'].indexOf(extension) === -1) {
         return original
     }
