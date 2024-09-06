@@ -7,7 +7,6 @@
     "license": "MIT",
     "readme": "README.md",
     "icon": "images/icon.png",
-    "packageManager": "yarn@4.4.1",
     "author": {
         "name": "MJML",
         "email": "cedric@derniercri.io",

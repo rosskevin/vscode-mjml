@@ -5,6 +5,4 @@ documentation/*
 !documentation/tsconfig.json
 *.vsix
 
-.yarn/*
-!.yarn/patches
-!.yarn/releases
+.yarn
