@@ -4,7 +4,7 @@ import { TextDocument, TextEditor, window, workspace } from 'vscode'
 
 import { html as jsBeautify } from 'js-beautify'
 import mime from 'mime'
-import * as mjml2html from 'mjml'
+import mjml2html from 'mjml'
 
 export function renderMJML(
     cb: (content: string) => any,
