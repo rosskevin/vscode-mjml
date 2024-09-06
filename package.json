@@ -309,10 +309,9 @@
         "build:watch": "tsc -watch -p ./",
         "prepackage": "rm -rf dist/ out/",
         "vscode:prepublish": "yarn build",
-        "package": "vsce package --no-dependencies && yarn postpackage",
-        "postpackage": "mkdir -p dist && mv *.vsix dist",
+        "package": "vsce package --no-dependencies && mkdir -p dist && mv *.vsix dist",
         "package:install": "code --install-extension dist/*.vsix",
-        "deploy": "yarn deploy:vscode && yarn deploy:ovsx",
+        "deploy": "run-s deploy:vscode run-s deploy:ovsx",
         "deploy:vscode": "vsce publish --no-dependencies",
         "deploy:ovsx": "ovsx publish --no-dependencies"
     },
@@ -328,6 +327,7 @@
         "highlight.js": "^11.10.0",
         "markdown-it": "^14.1.0",
         "markdown-it-anchor": "^9.1.0",
+        "npm-run-all": "^4.1.5",
         "typescript": "^5.5.4",
         "vscode-test": "^1.6.1"
     },
