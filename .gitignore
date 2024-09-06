@@ -6,3 +6,4 @@ documentation/*
 *.vsix
 
 .yarn
+.yarnrc.yml
