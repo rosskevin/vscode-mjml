@@ -2,7 +2,7 @@
     "name": "vscode-mjml",
     "displayName": "MJML",
     "description": "MJML preview, lint, compile for Visual Studio Code.",
-    "version": "1.0.6",
+    "version": "2.0.0-alpha",
     "publisher": "mjmlio",
     "license": "MIT",
     "readme": "README.md",
@@ -306,9 +306,16 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -watch -p ./",
-        "test": "node ./out/test/runTest.js"
+        "build": "tsc -p ./",
+        "build:watch": "tsc -watch -p ./",
+        "prepackage": "rm -rf dist/ out/",
+        "vscode:prepublish": "yarn build",
+        "package": "vsce package --no-dependencies && yarn postpackage",
+        "postpackage": "mkdir -p dist && mv *.vsix dist",
+        "package:install": "code --install-extension dist/*.vsix",
+        "deploy": "yarn deploy:vscode && yarn deploy:ovsx",
+        "deploy:vscode": "vsce publish --no-dependencies",
+        "deploy:ovsx": "ovsx publish --no-dependencies"
     },
     "devDependencies": {
         "@types/copy-paste": "^1.1.33",
